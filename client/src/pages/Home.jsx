@@ -13,7 +13,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3000/book/all")
+      .get("https://bookstore-backend-mdlm.onrender.com/book/all")
       .then((response) => {
         setBooks(response.data.allBooks);
         setLoading(false);

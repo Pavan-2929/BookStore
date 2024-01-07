@@ -20,15 +20,15 @@ function CreateBook() {
     setLoading(true);
 
     axios
-      .post("http://localhost:3000/book", formData)
+      .post("https://bookstore-backend-mdlm.onrender.com/book", formData)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar("Book created Successfuly", {variant: 'success'})
+        enqueueSnackbar("Book created Successfuly", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
         console.log(error);
-        enqueueSnackbar("Something went wrong", {variant: 'error'})
+        enqueueSnackbar("Something went wrong", { variant: "error" });
         setLoading(false);
       });
   };

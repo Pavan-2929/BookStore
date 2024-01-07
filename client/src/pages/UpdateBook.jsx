@@ -16,11 +16,13 @@ function UpdateBook() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/book/${id}`).then((response) => {
-      setTitle(response.data.title);
-      setAuthor(response.data.author);
-      setPublishYear(response.data.publishYear);
-    });
+    axios
+      .get(`https://bookstore-backend-mdlm.onrender.com/book/${id}`)
+      .then((response) => {
+        setTitle(response.data.title);
+        setAuthor(response.data.author);
+        setPublishYear(response.data.publishYear);
+      });
   }, []);
 
   const handleUpdate = async (e) => {
@@ -30,16 +32,16 @@ function UpdateBook() {
     setLoading(true);
 
     axios
-      .put(`http://localhost:3000/book/update/${id}`, formData)
+      .put(`https://bookstore-backend-mdlm.onrender.com/book/update/${id}`, formData)
       .then(() => {
         setLoading(false);
         navigate("/");
-        enqueueSnackbar("Book Updated Successfully", {variant:'success'})
+        enqueueSnackbar("Book Updated Successfully", { variant: "success" });
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        enqueueSnackbar("Something Went Wrong", {variant: 'error'})
+        enqueueSnackbar("Something Went Wrong", { variant: "error" });
       });
   };
 
